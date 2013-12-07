@@ -7,9 +7,7 @@
 	$validExitCodes = @(0)
 
 	Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "$url64"  -validExitCodes $validExitCodes
-	$is64bit = (Get-WmiObject Win32_Processor).AddressWidth -eq 64
 	$programFiles = $env:programfiles
-	if ($is64bit) {$programFiles = ${env:ProgramFiles(x86)}}
 	$awscliPath = Join-Path $programFiles 'Amazon\AWSCLI'
 
 	Install-ChocolateyPath $awscliPath 'user'
