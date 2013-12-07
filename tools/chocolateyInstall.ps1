@@ -10,7 +10,8 @@
 	$programFiles = $env:programfiles
 	$awscliPath = Join-Path $programFiles 'Amazon\AWSCLI'
 
-	Install-ChocolateyPath $awscliPath 'user'
+	Install-ChocolateyPath $awscliPath 'machine'
+	$env:Path += ";$awscliPath"
 	Write-ChocolateySuccess "$packageName"
 } catch {
 	Write-ChocolateyFailure "$packageName" "$($_.Exception.Message)"
