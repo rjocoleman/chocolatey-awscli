@@ -1,0 +1,20 @@
+
+os: Windows Server 2012
+
+install:
+  - cmd: choco pack awscli.nuspec
+
+build: off
+
+test: off
+
+artifacts:
+  # pushing all *.nupkg files in directory
+  - path: /.*\.nupkg/
+
+deploy:
+  provider: NuGet
+  server: http://chocolatey.org/api/v2/
+  api_key:
+    secure: MHXDCXK5hQWqjOXq+OHpv0P22/ZC8hblFf3aY7/8+tibY7AcziBWRtq0Zw9wIeWO
+  artifact: /.*\.nupkg/
